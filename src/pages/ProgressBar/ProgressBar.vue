@@ -34,7 +34,7 @@
       let _this = this;
       this.$nextTick(function () {  //dom加载之后执行
         this.StyHeight = _this.$refs.companyStyle.clientWidth + 'px';   //获取盒子宽度并赋值给StyHeight
-        this.changeStepClass(this.stepData);
+        this.changeStepClass(this.proStep);
       });
     },
     methods: {
@@ -51,35 +51,49 @@
               diamondBox.style.transform = "rotate(45deg)";
               diamondBox.style.background = "#fe5722";
               diamondBox.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
-            }, 500);
+            }, 300);
             setTimeout(function(){
               proBar.style.width = "25%";
               proBar.style.transitionDuration = ".5s";
-            }, 700);
+            }, 500);
             break;
           case 1:
+            diamondBox.style.transitionDuration = ".5s";
+            diamondBox.style.transform = "rotate(45deg)";
+            diamondBox.style.background = "#fe5722";
+            diamondBox.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
             setTimeout(function(){
               proBar.style.width = "75%";
               proBar.style.transitionDuration = ".95s";
-            }, 500);
+            }, 300);
             setTimeout(function () {
               diamondBox1.style.transitionDuration = ".5s";
               diamondBox1.style.transform = "rotate(45deg)";
               diamondBox1.style.background = "#fe5722";
               diamondBox1.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
-            }, 700);
+            }, 500);
             break;
           case 2:
+            diamondBox.style.transitionDuration = ".5s";
+            diamondBox.style.transform = "rotate(45deg)";
+            diamondBox.style.background = "#fe5722";
+            diamondBox.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
+            setTimeout(function () {
+              diamondBox1.style.transitionDuration = ".5s";
+              diamondBox1.style.transform = "rotate(45deg)";
+              diamondBox1.style.background = "#fe5722";
+              diamondBox1.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
+            },300)
             setTimeout(function(){
               proBar.style.width = "100%";
               proBar.style.transitionDuration = ".5s";
-            }, 500);
+            }, 300);
             setTimeout(function () {
               diamondBox2.style.transitionDuration = ".5s";
               diamondBox2.style.transform = "rotate(45deg)";
               diamondBox2.style.background = "#fe5722";
               diamondBox2.style.boxShadow = "inset 0px 0px 0px 5px #ff9a7a";
-            }, 800);
+            }, 600);
             break;
         }
       },
@@ -94,25 +108,25 @@
             setTimeout(function(){
               proBar.style.width = "0%";
               proBar.style.transitionDuration = ".5s";
-            }, 500);
+            }, 300);
             setTimeout(function () {
               diamondBox.style.transitionDuration = ".5s";
               diamondBox.style.transform = "rotate(0deg)";
               diamondBox.style.background = "white";
               diamondBox.style.boxShadow = "inset 0px 0px 0px 5px #cccccc";
-            }, 700);
+            }, 500);
             break;
           case 0:
             setTimeout(function(){
               proBar.style.width = "25%";
               proBar.style.transitionDuration = ".95s";
-            }, 500);
+            }, 300);
             setTimeout(function () {
               diamondBox1.style.transitionDuration = ".5s";
               diamondBox1.style.transform = "rotate(0deg)";
               diamondBox1.style.background = "white";
               diamondBox1.style.boxShadow = "inset 0px 0px 0px 5px #cccccc";
-            }, 700);
+            }, 500);
             break;
           case 1:
             setTimeout(function () {
@@ -120,11 +134,11 @@
               diamondBox2.style.transform = "rotate(0deg)";
               diamondBox2.style.background = "white";
               diamondBox2.style.boxShadow = "inset 0px 0px 0px 5px #cccccc";
-            }, 500);
+            }, 300);
             setTimeout(function(){
               proBar.style.width = "75%";
               proBar.style.transitionDuration = ".95s";
-            }, 600);
+            }, 400);
             break;
         }
       }
@@ -132,7 +146,8 @@
     watch: {
       //监听父组件传进来的值的变化
       proStep(newValue, oldValue) {
-        if(newValue>oldValue){
+        this.stepData = newValue
+        if(this.stepData>oldValue){
           this.changeStepClass(newValue);
         }else{
           this.backChangeStepClass(newValue);
@@ -178,7 +193,7 @@
 
   /*菱形*/
   .progressBar-diamond-box {
-    width: 11.25%;
+    width: 10.9%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
